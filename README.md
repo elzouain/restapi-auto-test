@@ -1,7 +1,6 @@
 # REST API Automation Example
 
-A project to test the [Cat Facts API](<https://alexwohlbruck.github.io/cat-facts/>) using Python, PyTests, 
-and the Requests library.
+A Python project to perform several API tests against the [Cat Facts API](<https://alexwohlbruck.github.io/cat-facts/>).
 
 # Test Approach 
 
