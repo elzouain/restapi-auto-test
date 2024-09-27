@@ -24,17 +24,24 @@ def test_facts_endpoint_invalid_status_code():
     assert_invalid_status_code("delete", FACTS_ENDPOINT, 200)
 
 
+def test_facts_endpoint_response_has_multiple_results():
+    response = requests.get(f"{FACTS_ENDPOINT}/random")
+    data     = response.json()
+    assert len(data) > 0 , f"Endpoint /facts did not returned 0 objects."
+
+
 def test_facts_random_endpoint_is_not_empty():
     response = requests.get(f"{FACTS_ENDPOINT}/random")
+    assert response.text != "", "Endpoint 'facts/random returned an empty object."
     data = response.json()
-    assert len(data) != 0 , "Endpoint facts/random returned an empty object."
+    assert data['_id'] != "" , "Endpoint /facts/random returned 0 objects."
 
 
 @pytest.mark.parametrize("animal_type,amount", [("cat", 2), ("cat",100)])
 def test_facts_random_endpoint_returns_valid_animal_type_and_amount(animal_type, amount):
-    query = f"?animal_type={animal_type}&amount={amount}"
+    query    = f"?animal_type={animal_type}&amount={amount}"
     response = requests.get(f"{FACTS_ENDPOINT}/random{query}")
-    data = response.json()
+    data     = response.json()
     for o in data:
         for attr, value in o.items():
             if attr == "type":
@@ -45,6 +52,6 @@ def test_facts_random_endpoint_returns_valid_animal_type_and_amount(animal_type,
 
 @pytest.mark.parametrize("animal_type", ["truck"])
 def test_facts_random_endpoint_returns_empty_with_invalid_animal_type(animal_type):
-    query = f"?animal_type={animal_type}"
+    query    = f"?animal_type={animal_type}"
     response = requests.get(f"{FACTS_ENDPOINT}/random{query}")
     assert response.text == "", f"Query {query} JSON response is not empty.Expected {0} found {response.text}."
