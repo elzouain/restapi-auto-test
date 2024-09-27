@@ -7,13 +7,15 @@ and the Requests library.
 
 <b>BASE URL:</b> https://cat-fact.herokuapp.com
 
-| Endpoint      | Parameters  | Values  | Expected Result                            |
-|---------------|-------------|---------|--------------------------------------------| 
-| /facts        | --          | --      | Response with 5 unsorted objects.          |
-| /facts/random | --          | --      | Returns a single random object.            |
-| /facts/random | animal_type | 'cat'   | Returns an object with 'type' equals 'cat' |
-| /facts/random | animal_type | 'truck' | Empty response.                            |
-| /facts/random | amount      | n       | Matching amount of n results.              |
+| Endpoint      | Parameters  | Values  | Expected Result                                 |
+|---------------|-------------|---------|-------------------------------------------------| 
+| BASE URL      | --          | --      | Content type is <i>text/html; charset=UTF-8</i> |
+| /facts        | --          | --      | Content type is <i>application/json; charset=UTF-8</i>         |
+| /facts        | --          | --      | Response with multiple unsorted objects.        |
+| /facts/random | --          | --      | Returns a single random object.                 |
+| /facts/random | animal_type | 'cat'   | Returns an object with 'type' equals 'cat'      |
+| /facts/random | animal_type | 'truck' | Empty response.                                 |
+| /facts/random | amount      | n       | Matching amount of n results.                   |
 
 # Requirements
 
