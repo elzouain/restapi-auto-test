@@ -3,6 +3,12 @@
 A project to test the [Cat Facts API](<https://alexwohlbruck.github.io/cat-facts/>) using Python, PyTests, 
 and the Requests library.
 
+# Test Approach 
+
+This project will perform <b>Validation Testing</b> to ensure the content received is the expected, as 
+detailed in the [Cat Facts API documentation page.](<https://alexwohlbruck.github.io/cat-facts/docs/endpoints/facts.html/>)
+
+
 # Test Cases
 
 <b>BASE URL:</b> https://cat-fact.herokuapp.com
