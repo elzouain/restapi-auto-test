@@ -1,15 +1,16 @@
 import string
 
 import requests
+from requests import request
 
 
-def assert_status_code(url: string, expected_status_code=200):
-    response = requests.get(url)
+def assert_valid_status_code(request_type: string, url: string, expected_status_code=200):
+    response = request(request_type, url)
     assert response.status_code == expected_status_code, \
         f"Incorrect status code. Expected {expected_status_code} found {response.status_code}."
 
-def assert_invalid_status_code(url: string, invalid_status_code):
-    response = requests.get(url)
+def assert_invalid_status_code(request_type: string, url: string, invalid_status_code):
+    response = request(request_type, url)
     assert response.status_code != invalid_status_code, \
         f"Invalid status code received. Not expected {invalid_status_code} found {response.status_code}."
 
